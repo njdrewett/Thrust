@@ -330,7 +330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 5.87, z: -22.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410440874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.57, z: 0}
+  m_LocalPosition: {x: 0, y: 15.52, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -566,6 +566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launch Pad
       objectReference: {fileID: 0}
+    - target: {fileID: 3313354718007468580, guid: ee232adeea4fcf74a83d5b8eb7166244, type: 3}
+      propertyPath: m_TagString
+      value: Safe
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2093148990726430708, guid: ee232adeea4fcf74a83d5b8eb7166244, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ee232adeea4fcf74a83d5b8eb7166244, type: 3}
@@ -624,6 +628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing Pad
       objectReference: {fileID: 0}
+    - target: {fileID: 7095634430545154295, guid: 40ae4e26d5113ad4f8abd30a35a175a6, type: 3}
+      propertyPath: m_TagString
+      value: Finish
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5781340599592521779, guid: 40ae4e26d5113ad4f8abd30a35a175a6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 40ae4e26d5113ad4f8abd30a35a175a6, type: 3}
@@ -644,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4488945336385121198, guid: 2bac33d8fd3384b4a9d14ab52cb1f4bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.81
+      value: 1.848
       objectReference: {fileID: 0}
     - target: {fileID: 4488945336385121198, guid: 2bac33d8fd3384b4a9d14ab52cb1f4bf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -681,14 +689,6 @@ PrefabInstance:
     - target: {fileID: 5765471444923190535, guid: 2bac33d8fd3384b4a9d14ab52cb1f4bf, type: 3}
       propertyPath: m_Name
       value: Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421579189444020365, guid: 2bac33d8fd3384b4a9d14ab52cb1f4bf, type: 3}
-      propertyPath: m_Drag
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421579189444020365, guid: 2bac33d8fd3384b4a9d14ab52cb1f4bf, type: 3}
-      propertyPath: m_Constraints
-      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bac33d8fd3384b4a9d14ab52cb1f4bf, type: 3}

@@ -8,13 +8,26 @@ public class Movement : MonoBehaviour
     [SerializeField] float thrustMagnitude = 500f;
 
     [SerializeField] float rotationMagnitude = 100f;
+
+    [SerializeField] AudioClip enginesClip;
+
+
     private Rigidbody rigidBody;
+    private AudioSource audioSource;
+
+    [SerializeField] ParticleSystem leftBoosterParticleSystem;
+    [SerializeField] ParticleSystem rightBoosterParticleSystem;
+    [SerializeField] ParticleSystem leftMainBoosterParticleSystem;
+    [SerializeField] ParticleSystem rightMainBoosterParticleSystem;
+
+    bool isAlive;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +38,6 @@ public class Movement : MonoBehaviour
 
     private void processInput() {
         processThrust();
-
         processRotation();
     }
 
@@ -36,16 +48,37 @@ public class Movement : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.A)) {
-            Debug.Log("A pressed - Rotate left");
-            applyRotation(Vector3.forward);
+            ProcessLeft();
             return;
         }
 
         if (Input.GetKey(KeyCode.D)) {
-            Debug.Log("A pressed - Rotate Right");
-            applyRotation(Vector3.back);
+            ProcessRight();
             return;
         }
+        StopRotationThrusts();
+    }
+
+    private void StopRotationThrusts() {
+        rightBoosterParticleSystem.Stop();
+        leftBoosterParticleSystem.Stop();
+    }
+
+    private void ProcessRight() {
+        Debug.Log("D pressed - Rotate Right");
+        if (!leftBoosterParticleSystem.isPlaying) {
+            leftBoosterParticleSystem.Play();
+        }
+        applyRotation(Vector3.back);
+    }
+
+    private void ProcessLeft() {
+        Debug.Log("A pressed - Rotate left");
+        if (!rightBoosterParticleSystem.isPlaying) {
+            rightBoosterParticleSystem.Play();
+        }
+
+        applyRotation(Vector3.forward);
     }
 
     private void applyRotation(Vector3 rotation) {
@@ -56,9 +89,27 @@ public class Movement : MonoBehaviour
 
     private void processThrust() {
         if (Input.GetKey(KeyCode.Space)) {
-            Debug.Log("Space pressed - Thrust");
-            rigidBody.AddRelativeForce(Vector3.up*thrustMagnitude*Time.deltaTime);
+            PlayMainThrust();
             return;
+        }
+        audioSource.Stop();
+        leftMainBoosterParticleSystem.Stop();
+        rightMainBoosterParticleSystem.Stop();
+    }
+
+    private void PlayMainThrust() {
+        Debug.Log("Space pressed - Thrust");
+        rigidBody.AddRelativeForce(Vector3.up * thrustMagnitude * Time.deltaTime);
+        audioSource.clip = enginesClip;
+        if (!leftMainBoosterParticleSystem.isPlaying) {
+            leftMainBoosterParticleSystem.Play();
+        }
+        if (!rightMainBoosterParticleSystem.isPlaying) {
+            rightMainBoosterParticleSystem.Play();
+        }
+
+        if (!audioSource.isPlaying) {
+            audioSource.Play();
         }
     }
 }
